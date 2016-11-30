@@ -1,13 +1,17 @@
+//Student Node class - Mathieu Vigneault & Patrick Davis & Kendra Blodkt
 public class StudentNode {
-
+	
+	//Declare variables 
 	private int SSN;
 	private String email;
 	private String name;
 	private int studentNumber;
 	private IdeaNode originalIdea;
 	private Idea[];
+	private StudentNode Left;
+	private StudentNode Right;
 	
-	//contructor that creates a node with a name, SSN
+	//contructor that creates a node with a student name, SSN, email and studentNumber.
 	public StudentNode (String name, int SSN, String email, int studentNumber){
 		this.name = name; 
 		this.SSN = SSN;
@@ -56,5 +60,21 @@ public class StudentNode {
 
 	public void setStudentNumber(int studentNumber) {
 		this.studentNumber = studentNumber;
+	}
+	
+	public StudentNode getRight() {
+		return Right;
+	}
+
+	public void setRight(Node Right) {
+		this.Right = Right;
+	}
+
+	public StudentNode getLeft() {
+		return Left;
+	}
+
+	public void setLeft(Node Left) {
+		this.Left = Left;
 	}
 }
