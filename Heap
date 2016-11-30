@@ -1,12 +1,12 @@
 /*priorety queue or HEAP- Patrick Davis-11/9/16*/
 
-public class Heap{
+public class IdeaHeap{
 	//declare variables
-	private Node[] heapArray;
+	private IdeaNode[] heapArray;
 	int n;
 	//constructor
 	public Heap(){
-		heapArray = new Node[128];
+		heapArray = new IdeaNode[128];
 		n=0;
 	}
 	//check if its empty
@@ -15,12 +15,12 @@ public class Heap{
 	}
 	
 	//find min of heap
-	public Node findMin(){
+	public IdeaNode findMin(){
 		return heapArray[0];
 	}
 	
 	//insert calls recurrsive insert
-	public void insert(Node x){
+	public void insert(IdeaNode x){
 		//insert at the end of the array then move it up the heap until it is bigger than its parent
 		heapArray[n] = x;
 		reInsert(n);
@@ -36,14 +36,14 @@ public class Heap{
 		//for even indices:
 		else if ((i%2==0)&& (heapArray[i].getKey()<heapArray[((i-2)/2)].getKey())){//maybe use x for heapArray[i] and type less
 			//need temp variable to swap
-			Node temp = heapArray[((i-2)/2)];
+			IdeaNode temp = heapArray[((i-2)/2)];
 			heapArray[((i-2)/2)] = heapArray[i];
 			heapArray[i] = temp;
 			reInsert((i-2)/2);//heapArray[((i-2)/2)],
 		}
 		//for odd indices
 		else if ((heapArray[i].getKey())<(heapArray[((i-1)/2)].getKey())){
-			Node temp = heapArray[((i-1)/2)];
+			IdeaNode temp = heapArray[((i-1)/2)];
 			heapArray[((i-1)/2)] = heapArray[i];
 			heapArray[i] = temp;
 			reInsert((i-1)/2);//might need heapArray[((i-1)/2)]
@@ -66,7 +66,7 @@ public class Heap{
 		else if (heapArray[2*i+2]==null) {
 			if(heapArray[i].getKey()>heapArray[2*i+1].getKey()){
 				//need temp variable to swap the two values
-				Node temp = heapArray[i];
+				IdeaNode temp = heapArray[i];
 				heapArray[i]= heapArray[2*i+1];
 				heapArray[2*i+1] = temp;
 			}
@@ -75,14 +75,14 @@ public class Heap{
 		//if one child is smaller than the other child and smaller than the parent then swap it with the parent
 		else if (((heapArray[2*i+1].getKey())>(heapArray[2*i+2].getKey()))&& (heapArray[i].getKey()>heapArray[2*i+2].getKey())){
 			//need temp to swap the two
-			Node temp = heapArray[i];
+			IdeaNode temp = heapArray[i];
 			heapArray[i]= heapArray[2*i+2];
 			heapArray[2*i+2] = temp;
 			reMoveBack(2*i+2);
 		}
 		//else swap it with the other child if the parent is bigger than that child
 		else if ((heapArray[i].getKey())>(heapArray[2*i+1].getKey())){
-			Node temp = heapArray[i];
+			IdeaNode temp = heapArray[i];
 			heapArray[i]= heapArray[2*i+1];
 			heapArray[2*i+1] = temp;
 			reMoveBack(2*i+1);
