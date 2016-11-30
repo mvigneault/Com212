@@ -66,7 +66,7 @@ public class StudentNode {
 		return Right;
 	}
 
-	public void setRight(Node Right) {
+	public void setRight(StudentNode Right) {
 		this.Right = Right;
 	}
 
@@ -74,7 +74,7 @@ public class StudentNode {
 		return Left;
 	}
 
-	public void setLeft(Node Left) {
+	public void setLeft(StudentNode Left) {
 		this.Left = Left;
 	}
 }
