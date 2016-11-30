@@ -1,0 +1,99 @@
+/*priorety queue or HEAP- Patrick Davis-11/9/16*/
+
+public class Heap{
+	//declare variables
+	private Node[] heapArray;
+	int n;
+	//constructor
+	public Heap(){
+		heapArray = new Node[128];
+		n=0;
+	}
+	//check if its empty
+	public boolean isEmpty(){
+		return n==0;
+	}
+	
+	//find min of heap
+	public Node findMin(){
+		return heapArray[0];
+	}
+	
+	//insert calls recurrsive insert
+	public void insert(Node x){
+		//insert at the end of the array then move it up the heap until it is bigger than its parent
+		heapArray[n] = x;
+		reInsert(n);
+		//increment the number of values in the heap
+		n++;
+		
+	}
+	//recursive insert
+	public void reInsert(int i){//use i for the index of the current spot youre checking
+		if(i==0){}
+		//if the node key that we are inserting is less than its parents, 
+		//then flip the child with the parent
+		//for even indices:
+		else if ((i%2==0)&& (heapArray[i].getKey()<heapArray[((i-2)/2)].getKey())){//maybe use x for heapArray[i] and type less
+			//need temp variable to swap
+			Node temp = heapArray[((i-2)/2)];
+			heapArray[((i-2)/2)] = heapArray[i];
+			heapArray[i] = temp;
+			reInsert((i-2)/2);//heapArray[((i-2)/2)],
+		}
+		//for odd indices
+		else if ((heapArray[i].getKey())<(heapArray[((i-1)/2)].getKey())){
+			Node temp = heapArray[((i-1)/2)];
+			heapArray[((i-1)/2)] = heapArray[i];
+			heapArray[i] = temp;
+			reInsert((i-1)/2);//might need heapArray[((i-1)/2)]
+		}
+	}
+	
+	//delete function, calls a recursive delete
+	public void deleteMin(){
+		heapArray[0]= heapArray[n-1];
+		heapArray[n-1]= null;
+		reMoveBack(0);
+		//decrement the number of values in the heap
+		n--;
+	}
+	//recurrsive move down in the heap
+	public void reMoveBack(int i){//use i for the index of the current spot that you might want to move back
+		// Must have first two cases to check if we get to the bottom of the heap,
+		//if there are no children to an element, then we dont want to compare it with its children
+		if (heapArray[2*i+1]==null){}
+		else if (heapArray[2*i+2]==null) {
+			if(heapArray[i].getKey()>heapArray[2*i+1].getKey()){
+				//need temp variable to swap the two values
+				Node temp = heapArray[i];
+				heapArray[i]= heapArray[2*i+1];
+				heapArray[2*i+1] = temp;
+			}
+		}
+		
+		//if one child is smaller than the other child and smaller than the parent then swap it with the parent
+		else if (((heapArray[2*i+1].getKey())>(heapArray[2*i+2].getKey()))&& (heapArray[i].getKey()>heapArray[2*i+2].getKey())){
+			//need temp to swap the two
+			Node temp = heapArray[i];
+			heapArray[i]= heapArray[2*i+2];
+			heapArray[2*i+2] = temp;
+			reMoveBack(2*i+2);
+		}
+		//else swap it with the other child if the parent is bigger than that child
+		else if ((heapArray[i].getKey())>(heapArray[2*i+1].getKey())){
+			Node temp = heapArray[i];
+			heapArray[i]= heapArray[2*i+1];
+			heapArray[2*i+1] = temp;
+			reMoveBack(2*i+1);
+		}
+	}		
+	//print out all elements in the array/heap
+	public void printHeap(){
+		System.out.println("Here are the contents of the array listed by index number:");
+		for (int j = 0;j!=n;j++){
+			System.out.println("Index"+j+" has a key of: "+heapArray[j].getKey());
+		}
+	}
+	
+}
