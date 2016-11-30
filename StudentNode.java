@@ -1,4 +1,4 @@
-//Student Node class - Mathieu Vigneault & Patrick Davis & Kendra Blodkt
+//Student Node class - Mathieu Vigneault & Patrick Davis & Kendra Bolt
 public class StudentNode {
 	
 	//Declare variables 
