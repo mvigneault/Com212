@@ -3,8 +3,8 @@
 public class QueueLL{
 	
 	//declare variables
-	private Node f; //f for front
-	private Node e; //e for end
+	private IdeaNode f; //f for front
+	private IdeaNode e; //e for end
 	private int n;
 	
 	//constructor
@@ -20,7 +20,7 @@ public class QueueLL{
 	}
 	
 	//return the front of the queue
-	public Node front(){
+	public IdeaNode front(){
 		return f;
 		
 	}
@@ -28,7 +28,7 @@ public class QueueLL{
 	/*add a given value to the end of the queue
 	if the queue is empty, must set the front and end equal to the given node
 	increment the length of the queue*/
-	public void enqueue(Node x){
+	public void enqueue(IdeaNode x){
 		if (isEmpty()) {
 			f=x;
 			e=x;
@@ -41,8 +41,8 @@ public class QueueLL{
 	}
 	
 	/*remove the front value in the queue, decrement the length of the queue*/
-	public Node dequeue(){
-		Node temp = f;
+	public IdeaNode dequeue(){
+		IdeaNode temp = f;
 		f = f.getNext();
 		temp.setNext(null);
 		n--;
@@ -52,7 +52,7 @@ public class QueueLL{
 	//print the length and all the values in the queue
 	 public void printQueue() {
 		System.out.println(n);
-		Node temp = f;
+		IdeaNode temp = f;
 		while (temp != null) {
 			System.out.println(temp.getKey());
 			temp = temp.getNext();
