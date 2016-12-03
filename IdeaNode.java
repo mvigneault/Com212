@@ -1,14 +1,15 @@
 //Node for Ideas — Kendra Bolt
 
-class IdeaNode{
+public class IdeaNode{
+	
 	private int ideaNum;
 	public int ideaSSN;
 	public String text;
 	public int rating;
-	private Node right;
-	private Node left;
+	private IdeaNode right;
+	private IdeaNode left;
 
-	public Idea( String x, int ssn, int y){
+	public void Idea(String x, int ssn, int y){
 		ideaSSN = ssn;
 		text = x;
 		rating = y;
@@ -30,19 +31,19 @@ class IdeaNode{
 		return ideaSSN;
 	}
 
-	public void setRight(Node x){
+	public void setRight(IdeaNode x){
 		right = x;
 	}
 
-	public Node getRight(){
+	public IdeaNode getRight(){
 		return right;
 	}
 	
-	public void setLeft(Node x){
+	public void setLeft(IdeaNode x){
 		left = x;
 	}
 	
-	public Node getLeft(){
+	public IdeaNode getLeft(){
 		return left;
 	}
 }
