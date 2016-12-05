@@ -7,7 +7,7 @@ public class StudentNode {
 	private String name;
 	private int studentNumber;
 	private IdeaNode originalIdea;
-	private Idea[];
+	private IdeaQueueLL queue;
 	private StudentNode Left;
 	private StudentNode Right;
 	
@@ -76,5 +76,9 @@ public class StudentNode {
 
 	public void setLeft(StudentNode Left) {
 		this.Left = Left;
+	}
+	
+	public void addIdea(IdeaNode idea) {
+		queue.enqueue(idea);
 	}
 }
