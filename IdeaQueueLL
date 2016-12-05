@@ -1,6 +1,6 @@
 /*Program Three- Patrick Davis 10/26/16*/
 
-public class QueueLL{
+public class IdeaQueueLL{
 	
 	//declare variables
 	private IdeaNode f; //f for front
