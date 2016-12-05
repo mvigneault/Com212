@@ -8,8 +8,9 @@ public class IdeaNode{
 	public int rating;
 	private IdeaNode right;
 	private IdeaNode left;
-
-	public IdeaNode(String x, int ssn, int y){
+	private IdeaNode next;
+	
+	public void Idea( String x, int ssn, int y){
 		ideaSSN = ssn;
 		text = x;
 		rating = y;
@@ -45,5 +46,13 @@ public class IdeaNode{
 	
 	public IdeaNode getLeft(){
 		return left;
+	}
+
+	public IdeaNode getNext() {
+		return next;
+	}
+
+	public void setNext(IdeaNode next) {
+		this.next = next;
 	}
 }
