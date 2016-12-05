@@ -8,7 +8,7 @@ public class IdeaQueueLL{
 	private int n;
 	
 	//constructor
-	public QueueLL(){
+	public IdeaQueueLL(){
 		f= null;
 		e= null;
 		n=0;
@@ -54,7 +54,7 @@ public class IdeaQueueLL{
 		System.out.println(n);
 		IdeaNode temp = f;
 		while (temp != null) {
-			System.out.println(temp.getKey());
+			System.out.println(temp.getIdea());
 			temp = temp.getNext();
         }
     }
