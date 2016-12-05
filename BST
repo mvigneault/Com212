@@ -1,0 +1,256 @@
+
+public class BST {
+	
+	private Node root;
+	
+	//Binary search tree constructor
+	public BST(){
+		root = null;
+	}
+	
+	//The search method find the key inside the BST using the search recursive method. 
+	public Node search(int key){
+		return searchr(root, key);
+	}
+	/*The recursion search method uses a temp variable to check if the key
+	  we are looking for is equal, bigger or smaller than the current node.
+	  If the key is equal to the node key, it returns the node. If the key is
+	  bigger than the node key, it goes to the right side next node and repeat 
+	  until it reaches the key that we are looking for. Same thing happened if the 
+	  key is smaller than the node key except it goes to the left next node. */
+	public Node searchr(Node node, int key){
+		
+		if(node == null){
+			return null;
+		}
+		else if(key == node.getKey()){
+			return node;
+		}
+		else if(key < node.getKey()){
+			return searchr(node.getLeft(), key);
+		}
+		else{
+			return searchr(node.getRight(), key);
+		}
+		
+	}
+	/* This delete method consider 4 different cases that could happened
+	   when we delete a node in the BST. The first case is when the node 
+	   we want to delete have no children. Then you just set the parent of
+	   the node equal to null. The second case is if the left side is equal to null. 
+	   If it is, we find the successsor and depending on the parent of that node, 
+	   set pointer to successor. The 3rd case is when the right side is equal to null.
+	   It is basically the same thing has the previous case except that it switch the
+	   right and left node functions. another case is when neither the left or right 
+	   is equal to null. If this case happen, you find the successor, make the parent child 
+	   equal to the successor. Another thing is if the node we want to delete is equal to the root. 
+	   we need to find the successor, set it to the root children and then set the root
+	   children equal to null and make the successor the new root.  */
+	public void delete(Node node){
+    
+		if(node.getKey() == root.getKey()){
+			Node successor = getSuccessor(root);
+			successor.setRight(root.getRight());
+			successor.setLeft(root.getLeft());
+			root.setLeft(null);
+			root.setRight(null);
+			root = successor;
+		}
+		else if(node.getLeft() == null && node.getRight() == null){
+             Node parent = getParent(node);
+             if(parent.getKey() < node.getKey()){
+            	 parent.setRight(null);
+             }
+             else{
+            	 parent.setLeft(null);
+             }
+         }
+		else if(node.getLeft() == null){
+			Node parent = getParent(node);
+			if(parent.getKey() < node.getKey()){
+				parent.setRight(node.getRight());
+				node.setRight(null);
+			}
+			else{
+				parent.setLeft(node.getRight());
+				node.getRight();
+			}
+		}
+		else if(node.getRight() == null){
+				Node parent = getParent(node);
+				if(parent.getKey() < node.getKey()){
+					parent.setLeft(node.getLeft());
+					node.setLeft(null);
+				}
+				else{
+					parent.setRight(node.getLeft());
+					node.getLeft();
+				}
+		}
+		else if(node.getLeft() != null && node.getRight() != null){
+			Node parent = getParent(node);
+			Node successor = getSuccessor(node);
+			successor.setRight(node.getRight());
+			successor.setLeft(node.getLeft());
+			node.setLeft(null);
+			node.setRight(null);
+			if(parent.getKey() < node.getKey()){
+				parent.setRight(successor);
+			}
+			else{
+				parent.setLeft(successor);
+			}	
+		}
+	}
+	//This method gets the parent of the node we want to delete
+	//using recursive method.
+	public Node getParent(Node child){
+		return getParentr(root, child.getKey());
+	}
+	
+	/* This method uses recursion to find the parent of the node 
+	   we want to deleteUsing the key, it checks if it is bigger, 
+	   equal or smaller than temp. Depending on the case, it will
+	   either return temp or recursively use the method. */
+	public Node getParentr(Node temp, int key){
+	
+		if(key < temp.getKey()){
+			if(temp.getLeft().getKey() == key){
+				return temp;
+			}
+			else{
+				return getParentr(temp.getLeft(), key);
+			}
+		}
+		else{
+			if(temp.getRight().getKey() == key){
+				return temp;
+			}
+			else{
+				return getParentr(temp.getRight(), key);
+			}
+		}
+		
+	}
+	
+	/* The successor method is finding the node that will replace
+	   the node we want to delete. First it gets the right node of
+	   the node we want to delete. if that node as a Left child, it
+	   goes to it until we reach the most far left child. Then it checks
+	   if the parent is bigger or smaller than the successor. If it is 
+	   smaller, it sets the right child of the parent equal to successor. 
+	   If the parent is bigger, it set the left child of the parent equal to 
+	   the successor. */
+	public Node getSuccessor(Node node){
+		Node temp = node.getRight();
+		while(temp.getLeft() != null){
+			temp = temp.getLeft();
+		}
+		Node parent = getParent(temp);
+		if(parent.getKey() < temp.getKey()){
+			parent.setRight((temp.getRight()));
+		}
+		else{
+			parent.setLeft((temp.getRight()));
+			temp.setRight(null);
+		}
+		return temp;
+	}
+	
+	/*The traverse method is printing out the binary search tree in order
+	  using the recursive method traverser.  */
+	public void traverse(){
+		
+		if(root != null){
+			Node traversenode = root;
+			
+			if(traversenode.getLeft() == null && traversenode.getRight() == null){
+				System.out.println(traversenode.getKey());
+			}
+			else{
+				traverser(traversenode);
+			}
+		}
+		System.out.println();
+	}
+	
+	/*The recursive traverse method uses a temp variable. If the current temp
+	  node has a left child, it uses recursion until it reaches the most left
+	  variable. Then it kicks back up until the root and after that it prints the left
+	  side in order. Then it prints the root and after that goes to the right side of
+	  the tree. */
+	private void traverser(Node node){
+	
+		if(node.getLeft() != null){
+			traverser(node.getLeft());
+		}
+		System.out.print(node.getKey() + " ");
+		
+		if(node.getRight() != null){
+			traverser(node.getRight());
+		}
+	}
+	/* The insert method add a node at the right spot in the binary search tree
+	  using the recursive insert method. */
+	public void insert(Node add){
+		if(isEmptyTree()){
+			root = add;
+		}
+		insertr(root, add);
+	}
+	/* The recursive insert method checks if the node we want to add is greater,
+	   equal or smaller than the temp node. Depending on the case, it goes down
+	   the BSt and find the right spot to be added */
+	private void insertr(Node node, Node add){
+		
+		if(add.getKey() < node.getKey()){
+			if(node.getLeft() == null){
+				add.setParent(node);
+				node.setLeft(add);
+			}
+			else{
+				insertr(node.getLeft(), add);
+			}
+		}
+		else if (add.getKey() > node.getKey()){
+			if(node.getRight() == null){
+				add.setParent(node);
+				node.setRight(add);
+			}
+			else{
+				insertr(node.getRight(), add);
+			}
+		}
+	}
+	//This method checks if the BST id empty or not. 
+	//Return false if not empty and true if empty.
+	public boolean isEmptyTree(){
+		return root == null;
+	}
+	
+	/* The two following methods prints out the binary search tree. 
+	  It was given by parker. */
+	 public void printTree() {
+			printTree2(root);
+			System.out.println();
+		    }
+
+	 private void printTree2(Node tree) {
+		if (tree != null) {
+			System.out.print(tree.getKey() + " ");
+			if (tree.getLeft() != null)
+				System.out.print("Left: " + tree.getLeft().getKey() + " ");
+			else
+				System.out.print("Left: null ");
+				if (tree.getRight() != null)
+					System.out.println("Right: " + tree.getRight().getKey() + " ");
+				else
+					System.out.println("Right: null ");
+		
+		printTree2(tree.getLeft());
+		printTree2(tree.getRight());
+		}
+    }
+
+
+}
