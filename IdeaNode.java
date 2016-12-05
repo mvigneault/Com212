@@ -9,7 +9,7 @@ public class IdeaNode{
 	private IdeaNode right;
 	private IdeaNode left;
 
-	public void Idea(String x, int ssn, int y){
+	public IdeaNode(String x, int ssn, int y){
 		ideaSSN = ssn;
 		text = x;
 		rating = y;
