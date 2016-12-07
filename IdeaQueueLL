@@ -19,10 +19,6 @@ public class IdeaQueueLL{
 		return f==null;
 	}
 	
-	public int length(){
-		return n;
-	}
-	
 	//return the front of the queue
 	public IdeaNode front(){
 		return f;
