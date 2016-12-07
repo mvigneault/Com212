@@ -14,7 +14,7 @@ public class Database{
     ideaHeap = IdeaHeap();
   }
   
-  public StudentNode searchSSN(String ssn){
+  public StudentNode searchSSN(int ssn){
     //searches SSNtree to return StudentNode
     //studentRecord = student node from search (for manipulation)
     studentRecord = ssnTree.search(ssn);
