@@ -9,9 +9,9 @@ public class Database{
   public IdeaHeap ideaHeap;
   
   public Database(){
-    ssnTree = SSNTree();
-    studNumBST = StudNumBST();
-    ideaHeap = IdeaHeap();
+    ssnTree = new SSNTree();
+    studNumBST = new StudNumBST();
+    ideaHeap = new IdeaHeap();
   }
   
   public StudentNode searchSSN(int ssn){
