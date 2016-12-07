@@ -1,14 +1,28 @@
 /*Main Function: Mathieu Vigneault & Patrick Davis & Kendra Bolt
 12/5/16 Kendra Main outline and rough coding*/
 
-public class Main{
-  public static void main(String[] args){
-    public StudentNode studentRecord;
-    private int uniqueIdeaNumber = 0;
+public class Database{
+  public StudentNode studentRecord;
+  private int uniqueIdeaNumber = 0;
+  public SSNTree ssnTree;
+  public StudNumBST studNumBST;
+  public IdeaHeap ideaHeap;
+  
+  public Database{
+    ssnTree = SSNTree();
+    studNumBST = StudNumBST();
+    ideaHeap = IdeaHeap();
+  }
   
     public StudentNode searchSSN(String ssn){
       //searches SSNtree to return StudentNode
+      StudentNode student = ssnTree.search(ssn);
       //displays last name, email login, ssn, avg score ideas, ideaqueue
+      System.out.println(student.getName());
+      System.out.println(student.getEmail());
+      System.out.println(student.getSSN());
+      System.out.println();
+      System.out.println(Student.)
       //studentRecord = student node from search (for manipulation)
     }
     
@@ -60,5 +74,4 @@ public class Main{
     
     
     
-  }
 }
