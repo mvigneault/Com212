@@ -83,15 +83,16 @@ public class StudentNode {
 		queue.enqueue(idea);
 	}
 	
-	public averageRating(){
-		float totalRating = 0;
+	public double averageRating(){
+		IdeaNode temp = queue.front(); 
+		double totalRating = 0;
 		int numRatings = 0;
-		int avgRating;
+		double avgRating;
 		while (temp!= null){
 			totalRating = totalRating+temp.getRating();
 			numRatings++;
 		}
-		avgRating = totalRating/ numRating;
+		avgRating = totalRating/ numRatings;
 		return avgRating;
 	}
 	
