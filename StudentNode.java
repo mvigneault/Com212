@@ -83,7 +83,7 @@ public class StudentNode {
 		queue.enqueue(idea);
 	}
 	
-	public double averageRating(){
+	public double getAverageRating(){
 		IdeaNode temp = queue.front(); 
 		double totalRating = 0;
 		int numRatings = 0;
