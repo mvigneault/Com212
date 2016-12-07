@@ -96,4 +96,8 @@ public class StudentNode {
 		return avgRating;
 	}
 	
+	public void printIdeaQueue(){
+		queue.printQueue();
+	}
+	
 }
