@@ -10,6 +10,7 @@ public class StudentNode {
 	private IdeaQueueLL queue;
 	private StudentNode Left;
 	private StudentNode Right;
+	private averageRating;
 	
 	//contructor that creates a node with a student name, SSN, email and studentNumber.
 	public StudentNode (String name, int SSN, String email, int studentNumber){
@@ -81,4 +82,17 @@ public class StudentNode {
 	public void addIdea(IdeaNode idea) {
 		queue.enqueue(idea);
 	}
+	
+	public averageRating(){
+		float totalRating = 0;
+		int numRatings = 0;
+		int avgRating;
+		while (temp!= null){
+			totalRating = totalRating+temp.getRating();
+			numRatings++;
+		}
+		avgRating = totalRating/ numRating;
+		return avgRating;
+	}
+	
 }
