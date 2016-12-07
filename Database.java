@@ -8,7 +8,7 @@ public class Database{
   public StudNumBST studNumBST;
   public IdeaHeap ideaHeap;
   
-  public Database{
+  public Database(){
     ssnTree = SSNTree();
     studNumBST = StudNumBST();
     ideaHeap = IdeaHeap();
