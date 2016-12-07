@@ -16,17 +16,16 @@ public class Database{
   
   public StudentNode searchSSN(String ssn){
     //searches SSNtree to return StudentNode
+    //studentRecord = student node from search (for manipulation)
     studentRecord = ssnTree.search(ssn);
 
     //displays last name, email login, ssn, avg score ideas, ideaqueue
     System.out.println(studentRecord.getName());
     System.out.println(studentRecord.getEmail());
     System.out.println(studentRecord.getSSN());
+    System.out.println(Student.getAverageRating());
     System.out.println();
-    //System.out.println(Student.)<--- get avg score ideas (also need line to access ideaqueue
-
-    //studentRecord = student node from search (for manipulation)
-
+    student.printIdeaQueue();
   }
 
   public void changeLastName(String newLastName){
