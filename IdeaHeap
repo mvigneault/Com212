@@ -25,9 +25,9 @@ public class IdeaHeap{
 		heapArray[n] = x;
 		reInsert(n);
 		//increment the number of values in the heap
-		n++;
-		
+		n++;	
 	}
+	
 	//recursive insert
 	public void reInsert(int i){//use i for the index of the current spot youre checking
 		if(i==0){}
@@ -94,4 +94,5 @@ public class IdeaHeap{
 		for (int j = 0;j!=n;j++){
 			System.out.println("Index"+j+" has a key of: "+heapArray[j].getRating());
 		}
-	}
+	}	
+}
