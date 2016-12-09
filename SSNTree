@@ -162,11 +162,11 @@ public class SSNTree{
 		}
 	}
 	//search for a given element, calls recursive search
-	public static StudentNode search(int key){
+	public StudentNode search(int key){
 		return compareNode(top,key);
 	}
 	//recursive search
-	public static StudentNode compareNode(StudentNode temp, int key){
+	public StudentNode compareNode(StudentNode temp, int key){
 		//if node null return null
 		if (temp == null){
 			return null;
@@ -198,6 +198,7 @@ public class SSNTree{
 		}
 		
 	}
+	
 	
 	//print tree given by Parker
 	public void printTree() {
