@@ -1,6 +1,3 @@
-/*Main Function: Mathieu Vigneault & Patrick Davis & Kendra Bolt
-12/5/16 Kendra Main outline and rough coding*/
-
 public class Database{
   public StudentNode studentRecord;
   private int uniqueIdeaNumber = 0;
@@ -17,15 +14,16 @@ public class Database{
   public StudentNode searchSSN(int ssn){
     //searches SSNtree to return StudentNode
     //studentRecord = student node from search (for manipulation)
-    studentRecord = ssnTree.search(ssn);
+    studentRecord = ssnTree.search(ssn); //******************
 
     //displays last name, email login, ssn, avg score ideas, ideaqueue
     System.out.println(studentRecord.getName());
     System.out.println(studentRecord.getEmail());
     System.out.println(studentRecord.getSSN());
-    System.out.println(Student.getAverageRating());
+    System.out.println(studentRecord.getAverageRating());
     System.out.println();
-    student.printIdeaQueue();
+    studentRecord.printIdeaQueue();
+	return studentRecord;
   }
 
   public void changeLastName(String newLastName){
@@ -54,7 +52,7 @@ public class Database{
     int ssn = idea.getSSN();
     ideaHeap.insert(idea);
     uniqueIdeaNumber++;
-    studentRecord = SSNTree.search(ssn);
+    studentRecord = ssnTree.search(ssn);
     studentRecord.addIdea(idea);
   }
 
@@ -63,14 +61,17 @@ public class Database{
   }
 
   public IdeaNode sellBestIdea(){
-    return ideaHeap.deleteMin();
+	  IdeaNode bestIdea = ideaHeap.findMin();
+	  ideaHeap.deleteMin();
+	  return bestIdea;
   }
 
-  public StudentNode searchIDnum(int num){
+  public String getEmail (int num){  //num is student ID number. 
     //search student number tree for student
     studentRecord = studNumBST.search(num);
     //display email login
-    System.out.println(studentRecord.getEmail());
+    return studentRecord.getEmail();
+    
   }
 
   public void printStudents(){
@@ -88,3 +89,4 @@ public class Database{
     
     
 }
+
