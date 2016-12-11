@@ -1,5 +1,21 @@
 public class Main {
 	 public static void main(String[] args){
+		try {
+		         FileInputStream fileIn = new FileInputStream("output.txt");
+		         ObjectInputStream in = new ObjectInputStream(fileIn);
+		         ssnTree = (SSNTree) in.readObject();
+		         studNumBST = (StudNumBST) in.readObject();
+		         ideaHeap = (IdeaHeap) in.readObject();
+		         in.close();
+		         fileIn.close();
+		}
+		catch(IOException i) {
+		         i.printStackTrace();
+		}
+		catch(ClassNotFoundException j) {
+		         j.printStackTrace();
+		}
+		 
 		Database a = new Database();
 		StudentNode xNode = new StudentNode ("Mathieu", 229935437, "mvigneau@conncoll.edu", 3390);
 		StudentNode yNode = new StudentNode ("Patrick", 435872959, "pdavis@conncoll.edu", 4601);
@@ -94,6 +110,21 @@ public class Main {
 		System.out.println();
 		System.out.println("isEmptyHash = " + a.isEmpty());
 		*/ 
+		 
+		//Serialize Code
+		try {
+			FileOutputStream fileOut = new FileOutputStream("output.txt");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(a.ssnTree);
+			out.writeObject(a.studNumTree);
+			out.writeObject(a.ideaHeap);
+			out.close();
+			fileOut.close();
+			System.out.println("Serialized object successfully in output.txt");
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
 	 }
 }
 
