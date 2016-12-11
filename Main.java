@@ -1,12 +1,14 @@
 public class Main {
 	 public static void main(String[] args){
+		Database a = new Database();
+
 		 //De-Serialize Code
 		try {
 		         FileInputStream fileIn = new FileInputStream("output.txt");
 		         ObjectInputStream in = new ObjectInputStream(fileIn);
-		         ssnTree = (SSNTree) in.readObject();
-		         studNumBST = (StudNumBST) in.readObject();
-		         ideaHeap = (IdeaHeap) in.readObject();
+		         a.ssnTree = (SSNTree) in.readObject();
+		         a.studNumBST = (StudNumBST) in.readObject();
+		         a.ideaHeap = (IdeaHeap) in.readObject();
 		         in.close();
 		         fileIn.close();
 		}
@@ -17,7 +19,6 @@ public class Main {
 		         j.printStackTrace();
 		}
 		 
-		Database a = new Database();
 		StudentNode xNode = new StudentNode ("Mathieu", 229935437, "mvigneau@conncoll.edu", 3390);
 		StudentNode yNode = new StudentNode ("Patrick", 435872959, "pdavis@conncoll.edu", 4601);
 		StudentNode zNode = new StudentNode ("Kendra", 753710983, "kbolt@conncoll.edu", 3219);
