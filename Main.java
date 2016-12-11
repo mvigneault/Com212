@@ -1,24 +1,41 @@
+import java.util.Scanner;
+
 public class Main {
 	 public static void main(String[] args){
-		Database a = new Database();
-
-		 //De-Serialize Code
+		System.out.println("Do you want a new Database or an existing Database?");
+		Scanner scan = new Scanner(System.in);
+		System.out.println("A: New Database");
+		System.out.println("B: Existing Database");
+		int result = scan.nextInt();
+		System.out.println(result);
+		if(result == 1){
+			Database a = new Database();
+			System.out.println(result);
+		}
+		else if (result == 2){
+			//restore old database 
+			System.out.println(result);
+		}
+		//else{
+			//System.out.println("Not an option");
+			//scan.nextLine();
+		//}
+		//Database a = new Database();
 		try {
-		         FileInputStream fileIn = new FileInputStream("output.txt");
-		         ObjectInputStream in = new ObjectInputStream(fileIn);
-		         a.ssnTree = (SSNTree) in.readObject();
-		         a.studNumBST = (StudNumBST) in.readObject();
-		         a.ideaHeap = (IdeaHeap) in.readObject();
-		         in.close();
-		         fileIn.close();
+	         FileInputStream fileIn = new FileInputStream("output.txt");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         a.ssnTree = (SSNTree) in.readObject();
+	         a.studNumBST = (StudNumBST) in.readObject();
+	         a.ideaHeap = (IdeaHeap) in.readObject();
+	         in.close();
+	         fileIn.close();
 		}
 		catch(IOException i) {
-		         i.printStackTrace();
+	         i.printStackTrace();
 		}
 		catch(ClassNotFoundException j) {
-		         j.printStackTrace();
-		}
-		 
+	         j.printStackTrace();
+}
 		StudentNode xNode = new StudentNode ("Mathieu", 229935437, "mvigneau@conncoll.edu", 3390);
 		StudentNode yNode = new StudentNode ("Patrick", 435872959, "pdavis@conncoll.edu", 4601);
 		StudentNode zNode = new StudentNode ("Kendra", 753710983, "kbolt@conncoll.edu", 3219);
@@ -112,13 +129,12 @@ public class Main {
 		System.out.println();
 		System.out.println("isEmptyHash = " + a.isEmpty());
 		*/ 
-		 
 		//Serialize Code
 		try {
 			FileOutputStream fileOut = new FileOutputStream("output.txt");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(a.ssnTree);
-			out.writeObject(a.studNumTree);
+			out.writeObject(a.studNumBST);
 			out.writeObject(a.ideaHeap);
 			out.close();
 			fileOut.close();
@@ -129,5 +145,4 @@ public class Main {
 		}
 	 }
 }
-
 
