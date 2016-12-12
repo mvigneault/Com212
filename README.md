@@ -12,7 +12,7 @@ Question 2: "What would you like to do? Please enter the letter corresponding to
 
 A. Add a new idea to the database; if student who created idea is not already in the database, he/she can be added.
 
-B. Search a student by SSN (optional: change email/last name or delete student record).
+B. Search a student by SSN (optional: change email/last name or delete student record); if not in database, prompted to create record.
 
 C. Find a student's email login by searching with student number.
 
