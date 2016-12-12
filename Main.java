@@ -1,25 +1,69 @@
 import java.util.Scanner;
 
 public class Main {
-	 public static void main(String[] args){
+	public static void main(String[] args){
+		//Question 1
 		System.out.println("Do you want a new Database or an existing Database?");
 		Scanner scan = new Scanner(System.in);
 		System.out.println("A: New Database");
 		System.out.println("B: Existing Database");
 		String result = scan.nextLine();
 		System.out.println(result);
+		
 		if(result.equals("A")){
 			Database a = new Database();
 			System.out.println(result);
 		}
 		else if (result.equals("B")){
-			//restore old database 
+			//restore old database
+			try {
+				FileInputStream fileIn = new FileInputStream("output.txt");
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				a.ssnTree = (SSNTree) in.readObject();
+				a.studNumBST = (StudNumBST) in.readObject();
+				a.ideaHeap = (IdeaHeap) in.readObject();
+				in.close();
+				fileIn.close();
+			}
+			catch(IOException i) {
+				i.printStackTrace();
+			}
+			catch(ClassNotFoundException j) {
+				j.printStackTrace();
+			}
 			System.out.println(result);
 		}
 		//else{
 			//System.out.println("Not an option");
 			//scan.nextLine();
 		//}
+
+		//Question 2
+		System.out.println("What would you like to do? Please enter the letter corresponding to your choice.");
+
+		System.out.println("A. Add a new Idea");
+		System.out.println("B. Update student information");
+		System.out.println("C. Find a student's email login");
+		System.out.println("D. Look at the best idea");
+		System.out.println("E. Look at a list of all students");
+		System.out.println("F. Quit the program");
+
+		String result = scan.nextLine();
+		System.out.println(result);
+		if(result.equals("A")){}
+		else if (result.equals("B")){}
+		else if (result.equals("C")){}
+		else if (result.equals("D")){}
+		else if (result.equals("E")){}
+		else if (result.equals("F")){}
+
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 		//Database a = new Database();
 		try {
 	         FileInputStream fileIn = new FileInputStream("output.txt");
