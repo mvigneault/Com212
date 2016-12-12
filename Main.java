@@ -93,7 +93,10 @@ public class Main {
 				a.sellBestIdea();
 			}
 		}
-		else if (result.equals("E")){}
+		else if (result.equals("E")){
+			//Print list of all students, organized by student number
+			a.printStudents()
+		}
 		else if (result.equals("F")){}
 
 		 
