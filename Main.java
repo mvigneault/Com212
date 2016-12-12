@@ -16,6 +16,7 @@ public class Main {
 		}
 		else if (result.equals("B")){
 			//restore old database
+			Database a = new Database();
 			try {
 				FileInputStream fileIn = new FileInputStream("output.txt");
 				ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -50,7 +51,31 @@ public class Main {
 
 		String result = scan.nextLine();
 		System.out.println(result);
-		if(result.equals("A")){}
+		if(result.equals("A")){
+			//Add new Idea
+			Scanner scan0 = new Scanner(System.in);
+			System.out.println("Please enter the last 4 digits of the SSN corresponding to the student who had the idea.");
+			String studSSN = scan0.nextLine();
+			StudentNode student = a.searchSSN(studSSN);
+			if (student == null){
+				Scanner scan1 = new Scanner(System.in);
+				System.out.println("Student not found in database.");
+				System.out.println("Please enter student's last name: ");
+				String name = scan1.nextLine();
+				System.out.println("Please enter student's email login: ");
+				String email = scan1.nextLine();
+				System.out.println("Please enter student's Student Number: ");
+				String studNum = scan1.nextLine();
+				
+				student = new StudentNode(name, studSSN, email, studNum);
+				a.newStudent(student);
+			}
+			
+			Scanner scan2 = new Scanner(System.in);
+			System.out.println("Please enter the student's idea:");
+			String name = scan2.nextLine();
+			//KEEP CODING HERE!
+		}
 		else if (result.equals("B")){}
 		else if (result.equals("C")){}
 		else if (result.equals("D")){}
