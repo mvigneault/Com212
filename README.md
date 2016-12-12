@@ -1,5 +1,5 @@
-# Com212
-Main
+# ℂ𝕠𝕞𝟚𝟙𝟚
+Main.java Reader's Manual
 Question 1: "Do you want a new Database or an existing Database?"
 
 A. Creates new database
