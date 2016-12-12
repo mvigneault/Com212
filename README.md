@@ -16,7 +16,7 @@ B. Search a student by SSN (optional: change email/last name or delete student r
 
 C. Find a student's email login by searching with student number.
 
-D. Look at the best idea in the database.
+D. Look at the best idea in the database (optional: sell the best idea).
 
 E. Look at a list of all students.
 
