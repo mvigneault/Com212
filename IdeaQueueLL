@@ -1,6 +1,7 @@
 /*Program Three- Patrick Davis 10/26/16*/
+import java.io.*;
 
-public class IdeaQueueLL{
+public class IdeaQueueLL implements java.io.Serializable{
 	
 	//declare variables
 	private IdeaNode f; //f for front
@@ -57,7 +58,5 @@ public class IdeaQueueLL{
 			System.out.println(temp.getIdea());
 			temp = temp.getNext();
         }
-    }
-	
-	
+    }	
 }
