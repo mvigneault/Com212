@@ -82,7 +82,16 @@ public class Main {
 		}
 		else if (result.equals("B")){}
 		else if (result.equals("C")){}
-		else if (result.equals("D")){}
+		else if (result.equals("D")){
+			//Look at best idea
+			System.out.println(a.getBestIdea());
+			System.out.println("Do you want to sell the best idea? Enter \"Yes\" or \"No\".");
+			Scanner scanYN = new Scanner(System.in);
+			String answer = scanYN.nextLine();
+			if (answer.equals("Yes")){
+				a.sellBestIdea();
+			}
+		}
 		else if (result.equals("E")){}
 		else if (result.equals("F")){}
 
