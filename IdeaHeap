@@ -14,8 +14,8 @@ public class IdeaHeap{
 		return n==0;
 	}
 	
-	//find min of heap
-	public IdeaNode findMin(){
+	//find max of heap
+	public IdeaNode findMax(){
 		return heapArray[0];
 	}
 	
@@ -34,7 +34,7 @@ public class IdeaHeap{
 		//if the node key that we are inserting is less than its parents, 
 		//then flip the child with the parent
 		//for even indices:
-		else if ((i%2==0)&& (heapArray[i].getRating()<heapArray[((i-2)/2)].getRating())){//maybe use x for heapArray[i] and type less
+		else if ((i%2==0)&& (heapArray[i].getRating()<==heapArray[((i-2)/2)].getRating())){//maybe use x for heapArray[i] and type less
 			//need temp variable to swap
 			IdeaNode temp = heapArray[((i-2)/2)];
 			heapArray[((i-2)/2)] = heapArray[i];
@@ -42,7 +42,7 @@ public class IdeaHeap{
 			reInsert((i-2)/2);//heapArray[((i-2)/2)],
 		}
 		//for odd indices
-		else if ((heapArray[i].getRating())<(heapArray[((i-1)/2)].getRating())){
+		else if ((heapArray[i].getRating())<==(heapArray[((i-1)/2)].getRating())){
 			IdeaNode temp = heapArray[((i-1)/2)];
 			heapArray[((i-1)/2)] = heapArray[i];
 			heapArray[i] = temp;
@@ -64,7 +64,7 @@ public class IdeaHeap{
 		//if there are no children to an element, then we dont want to compare it with its children
 		if (heapArray[2*i+1]==null){}
 		else if (heapArray[2*i+2]==null) {
-			if(heapArray[i].getRating()>heapArray[2*i+1].getRating()){
+			if(heapArray[i].getRating()<=heapArray[2*i+1].getRating()){
 				//need temp variable to swap the two values
 				IdeaNode temp = heapArray[i];
 				heapArray[i]= heapArray[2*i+1];
@@ -73,7 +73,7 @@ public class IdeaHeap{
 		}
 		
 		//if one child is smaller than the other child and smaller than the parent then swap it with the parent
-		else if (((heapArray[2*i+1].getRating())>(heapArray[2*i+2].getRating()))&& (heapArray[i].getRating()>heapArray[2*i+2].getRating())){
+		else if (((heapArray[2*i+1].getRating())<=(heapArray[2*i+2].getRating()))&& (heapArray[i].getRating()<=heapArray[2*i+2].getRating())){
 			//need temp to swap the two
 			IdeaNode temp = heapArray[i];
 			heapArray[i]= heapArray[2*i+2];
@@ -81,7 +81,7 @@ public class IdeaHeap{
 			reMoveBack(2*i+2);
 		}
 		//else swap it with the other child if the parent is bigger than that child
-		else if ((heapArray[i].getRating())>(heapArray[2*i+1].getRating())){
+		else if ((heapArray[i].getRating())<=(heapArray[2*i+1].getRating())){
 			IdeaNode temp = heapArray[i];
 			heapArray[i]= heapArray[2*i+1];
 			heapArray[2*i+1] = temp;
