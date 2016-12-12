@@ -78,6 +78,7 @@ public class Main {
 			int rating = scan2.nextInt();
 			
 			IdeaNode idea = new IdeaNode(strIdea, studSSN, rating);
+			newIdea(idea);
 		}
 		else if (result.equals("B")){}
 		else if (result.equals("C")){}
