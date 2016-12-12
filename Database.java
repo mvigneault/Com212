@@ -17,12 +17,12 @@ public class Database{
     studentRecord = ssnTree.search(ssn); //******************
 
     //displays last name, email login, ssn, avg score ideas, ideaqueue
-    System.out.println(studentRecord.getName());
-    System.out.println(studentRecord.getEmail());
-    System.out.println(studentRecord.getSSN());
-    System.out.println(studentRecord.getAverageRating());
-    System.out.println();
-    studentRecord.printIdeaQueue();
+   // System.out.println(studentRecord.getName());
+    //System.out.println(studentRecord.getEmail());
+    //System.out.println(studentRecord.getSSN());
+    //System.out.println(studentRecord.getAverageRating());
+    //System.out.println();
+    //studentRecord.printIdeaQueue();
 	return studentRecord;
   }
 
@@ -61,7 +61,7 @@ public class Database{
   }
 
   public IdeaNode sellBestIdea(){
-	  IdeaNode bestIdea = ideaHeap.findMin();
+	  IdeaNode bestIdea = ideaHeap.findMax();
 	  ideaHeap.deleteMax();
 	  return bestIdea;
   }
@@ -69,9 +69,12 @@ public class Database{
   public String getEmail (int num){  //num is student ID number. 
     //search student number tree for student
     studentRecord = studNumBST.search(num);
-    //display email login
+    if(studentRecord == null){
+    	return null;
+    }
+    else{//display email login
     return studentRecord.getEmail();
-    
+    }
   }
 
   public void printStudents(){
@@ -84,9 +87,5 @@ public class Database{
 
   //Your program should store the contents of the database to a file when it is shut down and retrieve the data when started back up again.
   //You only need a single text file for this, but can use more if you prefer.
-
-    
-    
-    
+	
 }
-
