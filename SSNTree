@@ -1,6 +1,7 @@
 /*Binary Search Tree By SSN*/
+import java.io.*;
 
-public class SSNTree{
+public class SSNTree implements java.io.Serializable{
 	//declare the root/ top of the tree
 	private static StudentNode top;
 	//constructor
