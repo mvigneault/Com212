@@ -1,6 +1,7 @@
 //Node for Ideas — Kendra Bolt
+import java.io.*;
 
-public class IdeaNode{
+public class IdeaNode implements java.io.Serializable{
 	
 	private int ideaNum;
 	public int ideaSSN;
