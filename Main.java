@@ -55,7 +55,7 @@ public class Main {
 			//Add new Idea
 			Scanner scan0 = new Scanner(System.in);
 			System.out.println("Please enter the last 4 digits of the SSN corresponding to the student who had the idea.");
-			String studSSN = scan0.nextLine();
+			int studSSN = scan0.nextInt();
 			StudentNode student = a.searchSSN(studSSN);
 			if (student == null){
 				Scanner scan1 = new Scanner(System.in);
@@ -65,7 +65,7 @@ public class Main {
 				System.out.println("Please enter student's email login: ");
 				String email = scan1.nextLine();
 				System.out.println("Please enter student's Student Number: ");
-				String studNum = scan1.nextLine();
+				String studNum = scan1.nextInt();
 				
 				student = new StudentNode(name, studSSN, email, studNum);
 				a.newStudent(student);
@@ -73,8 +73,11 @@ public class Main {
 			
 			Scanner scan2 = new Scanner(System.in);
 			System.out.println("Please enter the student's idea:");
-			String name = scan2.nextLine();
-			//KEEP CODING HERE!
+			String strIdea = scan2.nextLine();
+			System.out.println("Please enter the idea's rating:");
+			int rating = scan2.nextInt();
+			
+			IdeaNode idea = new IdeaNode(strIdea, studSSN, rating);
 		}
 		else if (result.equals("B")){}
 		else if (result.equals("C")){}
