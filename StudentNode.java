@@ -1,5 +1,6 @@
-//Student Node class - Mathieu Vigneault & Patrick Davis & Kendra Bolt
-public class StudentNode {
+import java.io.*;
+
+public class StudentNode implements java.io.Serializable{
 
 	private int SSN;
 	private String email;
@@ -12,13 +13,13 @@ public class StudentNode {
 	private StudentNode StudNumLeft; 
 	private StudentNode StudNumRight;
 	
-	
 	//contructor that creates a node with a name, SSN
 	public StudentNode (String name, int SSN, String email, int studentNumber){
 		this.name = name; 
 		this.SSN = SSN;
 		this.email = email;
-		this.studentNumber = studentNumber;
+		this.studentNumber = studentNumber; 
+		queue = new IdeaQueueLL();
 		
 	}
 	
@@ -29,6 +30,7 @@ public class StudentNode {
 		this.email = email;
 		this.studentNumber = studentNumber;
 		this.setOriginalIdea(originalIdea);
+		queue = new IdeaQueueLL();
 		
 	}
 
@@ -70,16 +72,25 @@ public class StudentNode {
 	}
 	
 	public double getAverageRating(){
+		if(queue.isEmpty()){
+			return 0; 
+		}
+		else{
 		IdeaNode temp = queue.front(); 
 		double totalRating = 0;
 		int numRatings = 0;
 		double avgRating;
+		if(temp == null){
+			return 0;
+		}
 		while (temp!= null){
 			totalRating = totalRating+temp.getRating();
 			numRatings++;
+			temp = temp.getNext();
 		}
 		avgRating = totalRating/ numRatings;
 		return avgRating;
+		}
 	}
 	
 	public void printIdeaQueue(){
