@@ -57,12 +57,12 @@ public class Database{
   }
 
   public IdeaNode getBestIdea(){
-    return ideaHeap.findMin();
+    return ideaHeap.findMax();
   }
 
   public IdeaNode sellBestIdea(){
 	  IdeaNode bestIdea = ideaHeap.findMin();
-	  ideaHeap.deleteMin();
+	  ideaHeap.deleteMax();
 	  return bestIdea;
   }
 
