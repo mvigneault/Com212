@@ -1,6 +1,7 @@
 /* Binary Search Tree by Student Number*/
+import java.io.*;
 
-public class StudNumBST{
+public class StudNumBST implements java.io.Serializable{
 	//declare the root/ top of the tree
 	private StudentNode top;
 	//constructor
@@ -208,21 +209,25 @@ public class StudNumBST{
 
 	private void printTree2(StudentNode tree) {
 		if (tree != null) {
-			System.out.print("Student: " + tree.getName() + " ");
-			System.out.println("Student Number: " + tree.getStudentNumber() + " ");
-			System.out.println("SSN: " + tree.getSSN() + " ");
+			System.out.println("Student: " + tree.getName());
+			System.out.println("Student Number: " + tree.getStudentNumber());
+			System.out.println("SSN: " + tree.getSSN());
 			System.out.println("Average Idea Rating: " + tree.getAverageRating());
-			System.out.println
-			if (tree.getStudNumLeft() != null)
+			System.out.println();
+			if (tree.getStudNumLeft() != null){
 				System.out.print("Left: " + tree.getStudNumLeft().getStudentNumber() + " ");
-			else
-				System.out.print("Left: null ");
-			if (tree.getStudNumRight() != null)
+			}
+			else{
+				//System.out.print("Left: null ");
+			}
+			if (tree.getStudNumRight() != null){
 				System.out.println("Right: " + tree.getStudNumRight().getStudentNumber() + " ");
-			else
-				System.out.println("Right: null ");
+			}
+			else{
+				//System.out.println("Right: null ");
+			}
 			printTree2(tree.getStudNumLeft());
 			printTree2(tree.getStudNumRight());
 		}
-	}
+}
 }
