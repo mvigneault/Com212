@@ -8,11 +8,11 @@ public class Main {
 		System.out.println("B: Existing Database");
 		int result = scan.nextInt();
 		System.out.println(result);
-		if(result == 1){
+		if(result.equals("A")){
 			Database a = new Database();
 			System.out.println(result);
 		}
-		else if (result == 2){
+		else if (result.equals("B")){
 			//restore old database 
 			System.out.println(result);
 		}
