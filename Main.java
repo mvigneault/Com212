@@ -6,7 +6,7 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("A: New Database");
 		System.out.println("B: Existing Database");
-		int result = scan.nextInt();
+		String result = scan.nextLine();
 		System.out.println(result);
 		if(result.equals("A")){
 			Database a = new Database();
