@@ -208,7 +208,11 @@ public class StudNumBST{
 
 	private void printTree2(StudentNode tree) {
 		if (tree != null) {
-			System.out.print(tree.getStudentNumber() + " ");
+			System.out.print("Student: " + tree.getName() + " ");
+			System.out.println("Student Number: " + tree.getStudentNumber() + " ");
+			System.out.println("SSN: " + tree.getSSN() + " ");
+			System.out.println("Average Idea Rating: " + tree.getAverageRating());
+			System.out.println
 			if (tree.getStudNumLeft() != null)
 				System.out.print("Left: " + tree.getStudNumLeft().getStudentNumber() + " ");
 			else
