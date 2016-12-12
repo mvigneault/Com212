@@ -84,6 +84,7 @@ public class Main {
 		else if (result.equals("C")){}
 		else if (result.equals("D")){
 			//Look at best idea
+			System.out.println("Best Idea:");
 			System.out.println(a.getBestIdea());
 			System.out.println("Do you want to sell the best idea? Enter \"Yes\" or \"No\".");
 			Scanner scanYN = new Scanner(System.in);
