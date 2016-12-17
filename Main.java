@@ -32,9 +32,10 @@ public class Main {
 			try {
 				FileInputStream fileIn = new FileInputStream("output.txt");
 				ObjectInputStream in = new ObjectInputStream(fileIn);
-				a.ssnTree = (SSNTree) in.readObject();
 				a.studNumBST = (StudNumBST) in.readObject();
+				a.ssnTree = (SSNTree) in.readObject();
 				a.ideaHeap = (IdeaHeap) in.readObject();
+				a = (Database) in.readObject();
 				in.close();
 				fileIn.close();
 			}
@@ -52,44 +53,89 @@ public class Main {
 		//Question 2
 		
 		System.out.println("What would you like to do? Please enter the letter corresponding to your choice.");
-		System.out.println("A. Add a new Idea");
-		System.out.println("B. Update student information");
-		System.out.println("C. Find a student's email login");
-		System.out.println("D. Look at the best idea");
-		System.out.println("E. Look at a list of all students");
-		System.out.println("F. Quit the program");
+		System.out.println("A. Add a New Student");
+		System.out.println("B. Add a New Idea");
+		System.out.println("C. Update student information");
+		System.out.println("D. Find a student's email login");
+		System.out.println("E. Look at the best idea");
+		System.out.println("F. Look at a list of all students");
+		System.out.println("G. Quit the program");
 		String result1 = scan.nextLine();
 		System.out.println();
 		
-		while(!result.equals("F")){
-			
+		while(!result.equals("G")){
+		
 		if(result1.equals("A")){
+			Scanner scan30 = new Scanner(System.in);
+			System.out.println("Please enter student's last name: ");
+			String name = scan30.nextLine();
+			System.out.println("Please enter student's email login: ");
+			String email = scan30.nextLine();
+			System.out.println("Please enter student's Student Number: ");
+			int studNum = scan30.nextInt();
+			System.out.println("Please enter student's SSN: ");
+			int studSSN = scan30.nextInt();
+			
+			StudentNode student = new StudentNode(name, studSSN, email, studNum);
+			a.newStudent(student);
+			System.out.println("A new student is created:");
+			System.out.println();
+			System.out.println("Student Last Name: " + student.getName());
+			System.out.println("Student Email: " + student.getEmail());
+			System.out.println("SSN: " + student.getSSN());
+			System.out.println("Student Number: " + student.getStudentNumber());
+			System.out.println();
+		}
+		if(result1.equals("B")){
 			//Add new Idea
+			
 			Scanner scan1 = new Scanner(System.in);
 			System.out.println("Please enter the last 4 digits of the SSN corresponding to the student who had the idea.");
 			int studSSN = scan1.nextInt();
 			StudentNode student = a.searchSSN(studSSN);
-
 			if (student == null){
 				Scanner scan2 = new Scanner(System.in);
 				System.out.println("Student not found in database.");
-				System.out.println("Please enter student's last name: ");
-				String name = scan2.nextLine();
-				System.out.println("Please enter student's email login: ");
-				String email = scan2.nextLine();
-				System.out.println("Please enter student's Student Number: ");
-				int studNum = scan2.nextInt();
-				
-				student = new StudentNode(name, studSSN, email, studNum);
-				a.newStudent(student);
-				System.out.println("A new student is created:");
 				System.out.println();
-				System.out.println(student.getName());
-				System.out.println(student.getEmail());
-				System.out.println(student.getSSN());
-				System.out.println(student.getStudentNumber());
-			}
+				System.out.println("Would you like to add a new student with this SSN? Enter \"Yes\" or \"No\".");
+				Scanner scanYN1 = new Scanner(System.in);
+				String answer1 = scanYN1.nextLine();
+				System.out.println();
+				if(answer1.equals("Yes")){
+					System.out.println("Please enter student's last name: ");
+					String name = scan2.nextLine();
+					System.out.println("Please enter student's email login: ");
+					String email = scan2.nextLine();
+					System.out.println("Please enter student's Student Number: ");
+					int studNum = scan2.nextInt();
+					
+					student = new StudentNode(name, studSSN, email, studNum);
+					a.newStudent(student);
+					System.out.println("A new student is created:");
+					System.out.println();
+					System.out.println("Student Last Name: " + student.getName());
+					System.out.println("Student Email: " + student.getEmail());
+					System.out.println("SSN: " + student.getSSN());
+					System.out.println("Student Number: " + student.getStudentNumber());
+					System.out.println();
+					
+					Scanner scan12 = new Scanner(System.in);
+					System.out.println("Please enter the student's idea:");
+					String strIdea = scan12.nextLine();
+					System.out.println("Please enter the idea's rating:");
+					int rating = scan12.nextInt();
+					
+					IdeaNode idea = new IdeaNode(strIdea, studSSN, rating);
+					a.newIdea(idea);
+					System.out.println("Student's new idea is added to the database");
+					System.out.println();
+					
+				
+				}
 			
+				
+			}
+			else{
 			Scanner scan3 = new Scanner(System.in);
 			System.out.println("Please enter the student's idea:");
 			String strIdea = scan3.nextLine();
@@ -99,12 +145,15 @@ public class Main {
 			IdeaNode idea = new IdeaNode(strIdea, studSSN, rating);
 			a.newIdea(idea);
 			System.out.println("Student's new idea is added to the database");
+			System.out.println();
+			}
+			
 		}
 
 		
 		
 		
-		else if (result1.equals("B")){
+		else if (result1.equals("C")){
 			Scanner scan4 = new Scanner(System.in);
 			System.out.println("Please enter the last 4 digits of the SSN corresponding to the student you are searching for.");
 			int studSSN = scan4.nextInt();
@@ -113,29 +162,39 @@ public class Main {
 			if (student == null){
 				Scanner scan5 = new Scanner(System.in);
 				System.out.println("Student not found in database.");
-				System.out.println("Please enter student's last name: ");
-				String name = scan5.nextLine();
-				System.out.println("Please enter student's email login: ");
-				String email = scan5.nextLine();
-				System.out.println("Please enter student's Student Number: ");
-				int studNum = scan5.nextInt();
-				
-				student = new StudentNode(name, studSSN, email, studNum);
-				a.newStudent(student);
-				System.out.println("A new student is created:");
 				System.out.println();
-				System.out.println(student.getName());
-				System.out.println(student.getEmail());
-				System.out.println(student.getSSN());
-				System.out.println(student.getStudentNumber());
+				System.out.println("Would you like to add a new student with this SSN? Enter \"Yes\" or \"No\".");
+				Scanner scanYN2 = new Scanner(System.in);
+				String answer2 = scanYN2.nextLine();
+				System.out.println();
+				if(answer2.equals("Yes")){
+					System.out.println("Please enter student's last name: ");
+					String name = scan5.nextLine();
+					System.out.println("Please enter student's email login: ");
+					String email = scan5.nextLine();
+					System.out.println("Please enter student's Student Number: ");
+					int studNum = scan5.nextInt();
+					
+					student = new StudentNode(name, studSSN, email, studNum);
+					a.newStudent(student);
+					System.out.println("A new student is created:");
+					System.out.println();
+					System.out.println("Student Last Name: " + student.getName());
+					System.out.println("Student Email: " + student.getEmail());
+					System.out.println("SSN: " + student.getSSN());
+					System.out.println("Student Number: " + student.getStudentNumber());
+					System.out.println();
+				}
+				
 			}
 			else{
 				Scanner scan6 = new Scanner(System.in);
 				System.out.println("Here is the information of this student:");
-				System.out.println(student.getName());
-				System.out.println(student.getEmail());
-				System.out.println(student.getSSN());
-				System.out.println(student.getStudentNumber());
+				System.out.println("Student Last Name: " + student.getName());
+				System.out.println("Student Email: " + student.getEmail());
+				System.out.println("SSN: " + student.getSSN());
+				System.out.println("Student Number: " + student.getStudentNumber());
+				System.out.println("Student Average Rating For Last 10 Ideas: " + student.getAverageRating());
 				System.out.println();
 				
 				System.out.println("Please enter the letter of the option you want.");
@@ -143,6 +202,7 @@ public class Main {
 				System.out.println("B. Change email");
 				System.out.println("C. Keep it the same");
 				System.out.println("D. Delete all together");
+				System.out.println("E. Display last 10 Ideas");
 				String result2 = scan.nextLine();
 				System.out.println();
 				
@@ -163,58 +223,100 @@ public class Main {
 					System.out.println("The student is deleted");
 					a.ssnTree.delete(student);
 					a.studNumBST.delete(student);
+					break;
+				}
+				if(result2.equals("E")){
+					System.out.println("Here are the student's last 10 ideas: ");
+					student.printIdeaQueue();
+					System.out.println();
 				}
 				System.out.println("Please enter the letter of the option you want.");
 				System.out.println("A. Change last name");
 				System.out.println("B. Change email");
 				System.out.println("C. Keep it the same");
 				System.out.println("D. Delete all together");
+				System.out.println("E. Display last 10 Ideas");
 				result2 = scan.nextLine();
 				System.out.println();
 			}
 		}
 		}
-		else if (result1.equals("C")){
+		else if (result1.equals("D")){
 			System.out.println("Please enter the last 4 digits of the student ID number to find the student's email login.");
 			Scanner scan9 = new Scanner(System.in);
-			int result3 = scan9.nextInt();
-			if(a.getEmail(result3) == null){
+			int studNum = scan9.nextInt();
+			
+			if(a.getEmail(studNum) == null){
+				Scanner scan13 = new Scanner(System.in);
 				System.out.println("There is no student with that ID number.");
 				System.out.println();
+				System.out.println("Would you like to add a new student with this SSN? Enter \"Yes\" or \"No\".");
+				Scanner scanYN3 = new Scanner(System.in);
+				String answer3 = scanYN3.nextLine();
+				System.out.println();
+				if(answer3.equals("Yes")){
+					System.out.println("Please enter student's last name: ");
+					String name = scan13.nextLine();
+					System.out.println("Please enter student's email login: ");
+					String email = scan13.nextLine();
+					System.out.println("Please enter student's SSN: ");
+					int studSSN = scan13.nextInt();
+					
+					StudentNode student = new StudentNode(name, studSSN, email, studNum);
+					a.newStudent(student);
+					System.out.println("A new student is created:");
+					System.out.println();
+					System.out.println("Student Last Name: " + student.getName());
+					System.out.println("Student Email: " + student.getEmail());
+					System.out.println("SSN: " + student.getSSN());
+					System.out.println("Student Number: " + student.getStudentNumber());
+					System.out.println();
+				}
 			}
 			else{
-				System.out.println(a.getEmail(result3));
+				System.out.println(a.getEmail(studNum));
 				System.out.println();
 			}
 		}
-		else if (result1.equals("D")){
+		else if (result1.equals("E")){
 			//Look at best idea
 			if(a.getBestIdea() == null){
 				System.out.println("There is no idea inside the database");
 			}
 			else{
 				System.out.println("Here is the best idea:");
-				System.out.println(a.getBestIdea());
-	
+				System.out.println(a.getBestIdea().getIdea());
+				System.out.println(a.getBestIdea().getRating());
+				
 				System.out.println("Do you want to sell the best idea? Enter \"Yes\" or \"No\".");
+				try{
 				Scanner scanYN = new Scanner(System.in);
 				String answer = scanYN.nextLine();
 				if (answer.equals("Yes")){
 					a.sellBestIdea();
+					System.out.println("The best Idea is sold.");
 				}
+				}
+				catch(NumberFormatException e) {
+				   System.out.println("One of the input is not a number " + e);
+				}				
 			}
 		}
-		else if (result1.equals("E")){
+		else if (result1.equals("F")){
+			if(a.studNumBST.isEmptyTree()){
+				System.out.println("There is no student in the system.");
+			}
 			a.printStudents();
 		}
 		
-		else if (result1.equals("F")){
+		else if (result1.equals("G")){
 			try {
 			FileOutputStream fileOut = new FileOutputStream("output.txt");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(a.ssnTree);
 			out.writeObject(a.studNumBST);
+			out.writeObject(a.ssnTree);
 			out.writeObject(a.ideaHeap);
+			out.writeObject(a);
 			out.close();
 			fileOut.close();
 			System.out.println("Serialized object successfully in output.txt");
@@ -225,15 +327,17 @@ public class Main {
 		break;
 		}
 		System.out.println("What would you like to do? Please enter the letter corresponding to your choice.");
-		System.out.println("A. Add a new Idea");
-		System.out.println("B. Search for student by SSN");
-		System.out.println("C. Find a student's email login");
-		System.out.println("D. Look at the best idea");
-		System.out.println("E. Look at a list of all students");
-		System.out.println("F. Quit the program");
+		System.out.println("A. Add a New Student");
+		System.out.println("B. Add a New Idea");
+		System.out.println("C. Search for student by SSN");
+		System.out.println("D. Find a student's email login");
+		System.out.println("E. Look at the best idea");
+		System.out.println("F. Look at a list of all students");
+		System.out.println("G. Quit the program");
 		result1 = scan.nextLine();
 		System.out.println();
 
 	}
 		 
 	}
+}
