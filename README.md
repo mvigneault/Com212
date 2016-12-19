@@ -11,17 +11,19 @@ B. Uploads previous database from file
 
 Question 2: "What would you like to do? Please enter the letter corresponding to your choice."
 
-A. Add a new idea to the database; if student who created idea is not already in the database, he/she can be added.
+A. Add a new Student to the database; last name, email, ssn, studNum.   
 
-B. Search a student by SSN (optional: change email/last name or delete student record); if not in database, prompted to create record.
+B. Add a new idea to the database; if student who created idea is not already in the database, he/she can be added.
 
-C. Find a student's email login by searching with student number.
+C. Search a student by SSN (optional: change email/last name or delete student record); if not in database, prompted to create record.
 
-D. Look at the best idea in the database (optional: sell the best idea).
+D. Find a student's email login by searching with student number.
 
-E. Look at a list of all students.
+E. Look at the best idea in the database (optional: sell the best idea).
 
-F. Quit the program
+F. Look at a list of all students.
+
+G. Quit the program
 
 
 
