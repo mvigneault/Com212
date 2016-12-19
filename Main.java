@@ -1,9 +1,17 @@
+/*This is the Main Class. 
+ * This class was done by Mathieu & Patrick.
+ * It was revised by Kendra.
+*/
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.lang.NumberFormatException;
+
 
 public class Main {
 	public static void main(String[] args){
@@ -66,6 +74,7 @@ public class Main {
 		while(!result.equals("G")){
 		
 		if(result1.equals("A")){
+			try{
 			Scanner scan30 = new Scanner(System.in);
 			System.out.println("Please enter student's last name: ");
 			String name = scan30.nextLine();
@@ -85,14 +94,27 @@ public class Main {
 			System.out.println("SSN: " + student.getSSN());
 			System.out.println("Student Number: " + student.getStudentNumber());
 			System.out.println();
+			}
+			catch(InputMismatchException e){
+				System.out.println("The last entry was not a number.");
+				System.out.println();
+			}
 		}
 		if(result1.equals("B")){
 			//Add new Idea
-			
-			Scanner scan1 = new Scanner(System.in);
+			try{
 			System.out.println("Please enter the last 4 digits of the SSN corresponding to the student who had the idea.");
+			Scanner scan1 = new Scanner(System.in);
 			int studSSN = scan1.nextInt();
 			StudentNode student = a.searchSSN(studSSN);
+			
+			while(studSSN < 0 || studSSN > 9999){
+				System.out.println("Something Wrong Was Typed.");
+				System.out.println("Please enter the last 4 digits of the SSN corresponding to the student who had the idea.");
+				studSSN = scan1.nextInt();
+				System.out.println();
+			}
+			
 			if (student == null){
 				Scanner scan2 = new Scanner(System.in);
 				System.out.println("Student not found in database.");
@@ -101,6 +123,11 @@ public class Main {
 				Scanner scanYN1 = new Scanner(System.in);
 				String answer1 = scanYN1.nextLine();
 				System.out.println();
+				while(!answer1.equals("Yes") && !answer1.equals("No")){
+					System.out.println("Would you like to add a new student with this SSN? Enter \"Yes\" or \"No\".");
+					answer1 = scanYN1.nextLine();
+					System.out.println();
+				}
 				if(answer1.equals("Yes")){
 					System.out.println("Please enter student's last name: ");
 					String name = scan2.nextLine();
@@ -119,6 +146,7 @@ public class Main {
 					System.out.println("Student Number: " + student.getStudentNumber());
 					System.out.println();
 					
+					try{
 					Scanner scan12 = new Scanner(System.in);
 					System.out.println("Please enter the student's idea:");
 					String strIdea = scan12.nextLine();
@@ -129,31 +157,51 @@ public class Main {
 					a.newIdea(idea);
 					System.out.println("Student's new idea is added to the database");
 					System.out.println();
+					}
+					catch(NumberFormatException e) {
+					    System.out.println("One of the input is not a number " + e);
+					}
+					catch(InputMismatchException e){
+						 System.out.println("The program is being haulted.");
+						 System.out.println("The last entry was not a number.");
+						 System.out.println();
+					}
 					
-				
 				}
-			
-				
+				else if(answer1.equals("No")){}
 			}
+			
 			else{
-			Scanner scan3 = new Scanner(System.in);
-			System.out.println("Please enter the student's idea:");
-			String strIdea = scan3.nextLine();
-			System.out.println("Please enter the idea's rating:");
-			int rating = scan3.nextInt();
-			
-			IdeaNode idea = new IdeaNode(strIdea, studSSN, rating);
-			a.newIdea(idea);
-			System.out.println("Student's new idea is added to the database");
-			System.out.println();
+				try{
+				Scanner scan3 = new Scanner(System.in);
+				System.out.println("Please enter the student's idea:");
+				String strIdea = scan3.nextLine();
+				System.out.println("Please enter the idea's rating:");
+				int rating = scan3.nextInt();
+				
+				IdeaNode idea = new IdeaNode(strIdea, studSSN, rating);
+				a.newIdea(idea);
+				System.out.println("Student's new idea is added to the database");
+				System.out.println();
+				}
+				catch(NumberFormatException e) {
+				    System.out.println("One of the input is not a number " + e);
+				}
+				catch(InputMismatchException e){
+					 System.out.println("The program is being haulted.");
+					 System.out.println("The last entry was not a number.");
+					 System.out.println();
+				}
 			}
-			
 		}
-
-		
-		
+		catch(InputMismatchException e){
+			 System.out.println("The last entry was not a number.");
+			 System.out.println();
+		}
+		}
 		
 		else if (result1.equals("C")){
+			try{
 			Scanner scan4 = new Scanner(System.in);
 			System.out.println("Please enter the last 4 digits of the SSN corresponding to the student you are searching for.");
 			int studSSN = scan4.nextInt();
@@ -167,6 +215,11 @@ public class Main {
 				Scanner scanYN2 = new Scanner(System.in);
 				String answer2 = scanYN2.nextLine();
 				System.out.println();
+				while(!answer2.equals("Yes") && !answer2.equals("No")){
+					System.out.println("Would you like to add a new student with this SSN? Enter \"Yes\" or \"No\".");
+					answer2 = scanYN2.nextLine();
+					System.out.println();
+				}
 				if(answer2.equals("Yes")){
 					System.out.println("Please enter student's last name: ");
 					String name = scan5.nextLine();
@@ -185,6 +238,7 @@ public class Main {
 					System.out.println("Student Number: " + student.getStudentNumber());
 					System.out.println();
 				}
+				else if(answer2.equals("No")){}
 				
 			}
 			else{
@@ -241,7 +295,13 @@ public class Main {
 			}
 		}
 		}
+		catch(InputMismatchException e){
+			System.out.println("The last entry was not a number.");
+			System.out.println();
+		}
+		}
 		else if (result1.equals("D")){
+			try{
 			System.out.println("Please enter the last 4 digits of the student ID number to find the student's email login.");
 			Scanner scan9 = new Scanner(System.in);
 			int studNum = scan9.nextInt();
@@ -254,6 +314,11 @@ public class Main {
 				Scanner scanYN3 = new Scanner(System.in);
 				String answer3 = scanYN3.nextLine();
 				System.out.println();
+				while(!answer3.equals("Yes") && !answer3.equals("No")){
+				System.out.println("Would you like to add a new student with this SSN? Enter \"Yes\" or \"No\".");
+				answer3 = scanYN3.nextLine();
+				System.out.println();
+				}
 				if(answer3.equals("Yes")){
 					System.out.println("Please enter student's last name: ");
 					String name = scan13.nextLine();
@@ -272,11 +337,17 @@ public class Main {
 					System.out.println("Student Number: " + student.getStudentNumber());
 					System.out.println();
 				}
+				else if(answer3.equals("No"));{}
 			}
 			else{
 				System.out.println(a.getEmail(studNum));
 				System.out.println();
 			}
+		}
+		catch(InputMismatchException e){
+			System.out.println("The last entry was not a number.");
+			System.out.println();
+		}
 		}
 		else if (result1.equals("E")){
 			//Look at best idea
@@ -289,17 +360,18 @@ public class Main {
 				System.out.println(a.getBestIdea().getRating());
 				
 				System.out.println("Do you want to sell the best idea? Enter \"Yes\" or \"No\".");
-				try{
 				Scanner scanYN = new Scanner(System.in);
 				String answer = scanYN.nextLine();
+				while(!answer.equals("Yes") && !answer.equals("No")){
+					System.out.println("Would you like to add a new student with this SSN? Enter \"Yes\" or \"No\".");
+					answer = scanYN.nextLine();
+					System.out.println();
+				}
 				if (answer.equals("Yes")){
 					a.sellBestIdea();
 					System.out.println("The best Idea is sold.");
 				}
-				}
-				catch(NumberFormatException e) {
-				   System.out.println("One of the input is not a number " + e);
-				}				
+				else if(answer.equals("No")){}
 			}
 		}
 		else if (result1.equals("F")){
