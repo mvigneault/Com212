@@ -1,4 +1,8 @@
-//Node for Ideas — Kendra Bolt
+/*Node for Ideas.
+ * This class was made by Kendra Bolt.
+ * Revised by Mathieu & Patrick.
+*/
+
 import java.io.*;
 
 public class IdeaNode implements java.io.Serializable{
