@@ -1,4 +1,7 @@
-/*Program Three- Patrick Davis 10/26/16*/
+/*This is the IdeaQueue class. 
+ * This class was made by Kendra Bolt.
+ * Revised by Mathieu & Patrick.
+*/
 import java.io.*;
 
 public class IdeaQueueLL implements java.io.Serializable{
@@ -51,12 +54,12 @@ public class IdeaQueueLL implements java.io.Serializable{
 	}
 	
 	//print the length and all the values in the queue
-	 public void printQueue() {
-		System.out.println(n);
+	public void printQueue() {
+		//System.out.println(n);
 		IdeaNode temp = f;
 		while (temp != null) {
 			System.out.println(temp.getIdea());
 			temp = temp.getNext();
         }
-    }	
+    }
 }
