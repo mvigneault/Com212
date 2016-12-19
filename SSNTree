@@ -1,3 +1,7 @@
+/*Tree made for the SSN.
+ * This class was made by Mathieu Vigneault.
+ * Revised by Kendra & Patrick.
+*/
 import java.io.*;
 
 public class SSNTree implements java.io.Serializable{
@@ -198,7 +202,6 @@ public class SSNTree implements java.io.Serializable{
 		}
 		
 	}
-	
 	
 	//print tree given by Parker
 	public void printTree() {
