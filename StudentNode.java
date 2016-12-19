@@ -1,3 +1,7 @@
+/*Node for Students.
+ * This class was made by Mathieu Vigneault.
+ * Revised by Kendra & Patrick.
+*/
 import java.io.*;
 
 public class StudentNode implements java.io.Serializable{
@@ -76,20 +80,20 @@ public class StudentNode implements java.io.Serializable{
 			return 0; 
 		}
 		else{
-		IdeaNode temp = queue.front(); 
-		double totalRating = 0;
-		int numRatings = 0;
-		double avgRating;
-		if(temp == null){
-			return 0;
-		}
-		while (temp!= null){
-			totalRating = totalRating+temp.getRating();
-			numRatings++;
-			temp = temp.getNext();
-		}
-		avgRating = totalRating/ numRatings;
-		return avgRating;
+			IdeaNode temp = queue.front(); 
+			double totalRating = 0;
+			int numRatings = 0;
+			double avgRating;
+			if(temp == null){
+				return 0;
+			}
+			while (temp!= null){
+				totalRating = totalRating+temp.getRating();
+				numRatings++;
+				temp = temp.getNext();
+			}
+			avgRating = totalRating/ numRatings;
+			return avgRating;
 		}
 	}
 	
@@ -136,5 +140,4 @@ public class StudentNode implements java.io.Serializable{
 	public void setStudNumRight(StudentNode studNumRight) {
 		StudNumRight = studNumRight;
 	}
-	
 }
