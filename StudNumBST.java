@@ -1,4 +1,7 @@
-/* Binary Search Tree by Student Number*/
+/* Binary Search Tree by Student Number.
+ * This class was made by Patrick Davis. 
+ * Revised by Mathieu & Kendra.
+ * */
 import java.io.*;
 
 public class StudNumBST implements java.io.Serializable{
@@ -214,20 +217,8 @@ public class StudNumBST implements java.io.Serializable{
 			System.out.println("SSN: " + tree.getSSN());
 			System.out.println("Average Idea Rating: " + tree.getAverageRating());
 			System.out.println();
-			if (tree.getStudNumLeft() != null){
-				System.out.print("Left: " + tree.getStudNumLeft().getStudentNumber() + " ");
-			}
-			else{
-				//System.out.print("Left: null ");
-			}
-			if (tree.getStudNumRight() != null){
-				System.out.println("Right: " + tree.getStudNumRight().getStudentNumber() + " ");
-			}
-			else{
-				//System.out.println("Right: null ");
-			}
 			printTree2(tree.getStudNumLeft());
 			printTree2(tree.getStudNumRight());
 		}
-}
+	}
 }
